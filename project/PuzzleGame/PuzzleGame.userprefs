@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../PuzzleGame/Assets/SampleAssets/2D/Scripts/PlatformerCharacter2D.cs">
+    <Files>
+      <File FileName="../../../../PuzzleGame/Assets/SampleAssets/2D/Scripts/PlatformerCharacter2D.cs" Line="77" Column="28" />
+      <File FileName="../../../../PuzzleGame/Assets/SampleAssets/2D/Scripts/Platformer2DUserControl.cs" Line="14" Column="10" />
+      <File FileName="Assets/Scripts/RobotController.cs" Line="12" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -23,6 +23,14 @@ namespace UnitySampleAssets.Cameras
 
         private Vector3 rollUp = Vector3.up;// The roll of the camera around the z axis ( generally this will always just be up )
 
+		private void Awake()
+		{
+			// Setting up the reference.
+			target = GameObject.FindGameObjectWithTag("Player").transform;
+			//Debug.Log("Get the player successfully!!!!!!");
+		}
+
+
         protected override void FollowTarget(float deltaTime)
         {
             // if no target, or no time passed then we quit early, as there is nothing to do

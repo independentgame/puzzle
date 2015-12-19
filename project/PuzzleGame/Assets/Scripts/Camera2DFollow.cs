@@ -6,7 +6,7 @@ namespace UnitySampleAssets._2D
     public class Camera2DFollow : MonoBehaviour
     {
 
-        public Transform target;
+        private Transform target;
         public float damping = 1;
         public float lookAheadFactor = 3;
         public float lookAheadReturnSpeed = 0.5f;
@@ -18,6 +18,13 @@ namespace UnitySampleAssets._2D
         private Vector3 lookAheadPos;
 
         // Use this for initialization
+		private void Awake()
+		{
+			// Setting up the reference.
+			target = GameObject.FindGameObjectWithTag("Player").transform;
+			Debug.Log("Get the player successfully!!!!!!");
+		}
+
         private void Start()
         {
             lastTargetPosition = target.position;

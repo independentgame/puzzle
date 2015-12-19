@@ -4,6 +4,7 @@ using System.Collections;
 public class RobotController : MonoBehaviour {
 
 	public float maxSpeed = 10.0f;
+	public float walkMaxSpeed = 1.0f;
 	bool facingRight = true;
 
 	Animator anim;
@@ -23,6 +24,8 @@ public class RobotController : MonoBehaviour {
 	[SerializeField] 
 	private bool airControl = false; // Whether or not a player can steer while jumping;
 
+	public bool isGoingToPushBox = false;
+
 	private Collider2D standCollider;
 	private Collider2D crouchCollider;
 	
@@ -34,21 +37,21 @@ public class RobotController : MonoBehaviour {
 	void Awake()
 	{
 		Collider2D[] c = GetComponentsInChildren<Collider2D> ();
-		Debug.Log ("colliders: " + c.Length);
+		//Debug.Log ("colliders: " + c.Length);
 		foreach (Collider2D d in c)
 		{
-			Debug.Log("collider: " + d.name+ " :" + d.enabled);
+			//Debug.Log("collider: " + d.name+ " :" + d.enabled);
 		}
 
 		Transform standBox = transform.FindChild("standBox");
 		if (standBox) {
-			Debug.Log("found box collider: "+standBox.gameObject.collider2D.name);		
+			//Debug.Log("found box collider: "+standBox.gameObject.collider2D.name);		
 			standCollider = standBox.gameObject.collider2D;
 		}
 
 		Transform crouchdBox = transform.FindChild("crouchBox");
 		if (crouchdBox) {
-			Debug.Log("found box collider: "+crouchdBox.gameObject.collider2D.name);		
+			//Debug.Log("found box collider: "+crouchdBox.gameObject.collider2D.name);		
 			crouchCollider = crouchdBox.gameObject.collider2D;
 		}
 		
@@ -59,7 +62,7 @@ public class RobotController : MonoBehaviour {
 	void FixedUpdate () {
 
 		// Read the inputs.
-		bool crouch = Input.GetKey(KeyCode.LeftControl);
+		bool crouch = Input.GetKey (KeyCode.LeftControl) || isGoingToPushBox;
 
 		// If crouching, check to see if the character can stand up
 		if (!crouch && anim.GetBool("Crouch"))
@@ -86,7 +89,9 @@ public class RobotController : MonoBehaviour {
 			float move = Input.GetAxis("Horizontal");
 
 			move = crouch ? crouchSpeed * move : move;
-			rigidbody2D.velocity = new Vector2 (maxSpeed * move, rigidbody2D.velocity.y);
+
+			float limitSpeed = move < 0.9 ? maxSpeed : walkMaxSpeed;
+			rigidbody2D.velocity = new Vector2 (limitSpeed * move, rigidbody2D.velocity.y);
 			
 			anim.SetFloat ("speed", Mathf.Abs (move));
 			

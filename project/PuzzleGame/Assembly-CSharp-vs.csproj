@@ -54,7 +54,10 @@
      <Compile Include="Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs" />
      <Compile Include="Assets\Cameras\Scripts\TargetFieldOfView.cs" />
      <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
+     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\CubeTrigger.cs" />
      <Compile Include="Assets\Scripts\RobotController.cs" />
+     <Compile Include="Assets\Scripts\TestScript.cs" />
      <None Include="Assets\Cameras\CameraGuidelines.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
